@@ -1,0 +1,12 @@
+a {
+    font-weight: 500;
+    color: #fff;
+    text-decoration: inherit;
+  }
+  li:hover a{
+    color: var(--color-green-900);
+  }
+
+  a:hover {
+    color: var(--color-green-900);
+  }
