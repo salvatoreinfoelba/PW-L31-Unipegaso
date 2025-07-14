@@ -146,7 +146,7 @@ const GraficiAnalisi = () => {
                 />
                 <Bar dataKey="production" fill="#8b5cf6" name="Produzione (kg/h)" />
                 <Bar dataKey="waterConsumption" fill="#3b82f6" name="Consumo Acqua (m³/ha/h)" />
-                <Bar dataKey="energyConsumption" fill="#f59e0b" name="Consumo Energia (kw/h)" />
+                <Bar dataKey="energyConsumption" fill="#f59e0b" name="Consumo Energia (kwh)" />
               </BarChart>
             </ResponsiveContainer>
           </div>
