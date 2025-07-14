@@ -28,7 +28,7 @@
         "energyQuantity": {
             "min": 50,
             "max": 70,
-            "unitMeasure": "kw/h"
+            "unitMeasure": "kwh"
         },
         "soilHumidity": {
             "min": 40,
