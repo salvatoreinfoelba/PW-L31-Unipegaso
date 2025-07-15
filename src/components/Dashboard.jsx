@@ -5,11 +5,13 @@ import TemperaturaCard from './weather/TemperaturaCard';
 import UmiditaCard from './weather/UmiditaCard';
 import PrecipitazioniCard from './weather/PrecipitazioniCard';
 import GraficiAnalisi from './Grafici';
+import { generaDatasetCompleto } from "../simulatore.js";
 import './Dashboard.css'
 
 
 const Dashboard = () => { 
   const config = cultivationIndicators['UVA'];
+  const weatherData = generaDatasetCompleto();
   const [temperature, setTemperature] = useState([]);
   const [humidity, setHumidity] = useState([]);
   const [rain, setRain] = useState([]);
@@ -20,15 +22,16 @@ const Dashboard = () => {
     };
 
   useEffect(() => {
-    setTemperature(generateRandomValue(config.optimalTemperature.min, config.optimalTemperature.max, 1));
-    setHumidity(generateRandomValue(config.soilHumidity.min, config.soilHumidity.max, 1));
-    setRain(generateRandomValue(config.rainPercentage.min, config.rainPercentage.max, 1));
+    setTemperature(weatherData.temperatura);
+    setHumidity(weatherData.umidita_percentuale);
+    setRain(weatherData.pioggia_mm);
 
     // Aggiorna ogni 3 secondi
     const interval = setInterval(() => {
-      setTemperature(generateRandomValue(config.optimalTemperature.min, config.optimalTemperature.max, 1));
-      setHumidity(generateRandomValue(config.soilHumidity.min, config.soilHumidity.max, 1));
-      setRain(generateRandomValue(config.rainPercentage.min, config.rainPercentage.max, 1));      
+      const weatherData = generaDatasetCompleto();
+      setTemperature(weatherData.temperatura);
+      setHumidity(weatherData.umidita_percentuale);
+      setRain(weatherData.pioggia_mm);      
     }, 3000);
 
     return () => clearInterval(interval);

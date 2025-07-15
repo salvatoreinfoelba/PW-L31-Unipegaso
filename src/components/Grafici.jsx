@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { TrendingUp, BarChart3, DollarSign } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { generaDatasetCompleto } from "../simulatore.js";
 import cultivationIndicators from '../../backend/grape-indicators.json';
 
 const GraficiAnalisi = () => {
-
   const [activeTab, setActiveTab] = useState('climatiche');
   const [realtimeData, setRealtimeData] = useState([]);
   const [produttiveData, generateProductionData] = useState([]);
   const [economicheData, generateEconomicData] = useState([]);
+  const weatherData = generaDatasetCompleto();
 
   const generateRandomValue = (min, max, precision = 0) => {
     const random = Math.random() * (max - min) + min;
@@ -26,9 +27,9 @@ const GraficiAnalisi = () => {
       const config = cultivationIndicators['UVA'];
 
       // Genera valori una volta sola per evitare inconsistenze
-      const temperature = generateRandomValue(config.optimalTemperature.min, config.optimalTemperature.max, 1);
-      const humidity = generateRandomValue(config.soilHumidity.min, config.soilHumidity.max, 1);
-      const rain = generateRandomValue(config.rainPercentage.min, config.rainPercentage.max, 1);
+      const temperature = weatherData.temperatura;
+      const humidity = weatherData.umidita_percentuale;
+      const rain = weatherData.pioggia_mm;
       const waterConsumption = generateRandomValue(config.waterQuantity.min, config.waterQuantity.max);
       const energyConsumption = generateRandomValue(config.energyQuantity.min, config.energyQuantity.max);
       
